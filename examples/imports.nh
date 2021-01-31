@@ -1,0 +1,31 @@
+
+
+
+
+; You can use different logic from math:
+; rand,
+; trunc, round, floor, ceil, log,
+; sin, cos, tan,
+; asin, acos, atan,
+; sqrt, exp, abs
+; output: [47]
+
+use <- math
+show <- math.rand <- [1, 100]
+
+
+; You can use different logic from text:
+; len, concat, up, down, search
+; output: [10]
+
+use <- text
+show <- text.len <- ['hello world']
+
+
+; You can use different logic from data:
+; str, num, bool
+; output: [123]
+
+use <- data
+show <- data.num <- ['123'] 
+
