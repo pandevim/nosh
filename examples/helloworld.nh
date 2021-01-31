@@ -1,0 +1,7 @@
+
+; Output:
+; Hello, World!
+
+show <- ['Hello, World!']
+
+
