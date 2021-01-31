@@ -1,0 +1,123 @@
+
+Nosh {
+
+    Program = 
+      Expr+
+
+    Expr =
+    |   id "<-" Expr_block -- funcdef
+    |   Arg "->" Return Suite                 -- block
+    |   If Else*      -- condition
+    |   "repeat" "<-" Data "->" id Suite -- repeat
+    |   id "=" Expr                           -- assignment
+    |   (Expr_lookup | Expr_name) "<-" Expr   -- call
+    |   "use" "<-" id                         -- import
+    |   (Expr_lookup | Expr_name) "." id      -- lookup
+    |   BoolExpr
+    |   Data                                  -- list
+    |   id                                    -- name
+
+    BoolExpr =
+      BoolExpr (boolop RelExpr) -- bool
+      | RelExpr -- rel
+
+    RelExpr =
+      MulExpr (relop MulExpr)* 
+
+    MulExpr =
+      MulExpr (mulop AddExpr) -- mul
+      | AddExpr
+
+    AddExpr =
+      AddExpr (addop (Data | Expr_name)) -- add
+      | Data | Expr_name
+
+    boolop = "and"
+
+    relop = "==" | "<"
+
+    mulop = "mod"
+
+    addop = "add"
+
+    Condition =
+      BoolExpr
+
+    Arg =
+      id | "[" ListOf<id, ","> "]" -- list
+      
+    Return = id
+
+    If =
+      "if" "<-" Condition Suite
+
+    Else =
+      "else" "<-" Condition Suite
+
+    id =
+        ~(keyword ~("_" | alnum)) letter ("_" | alnum)*
+
+    Data = 
+      List<(NumberLiteral | StringLiteral | BooleanLiteral | Data | Expr_name)>
+      | "[" (NumberLiteral | Expr_name) "," "..." "," (NumberLiteral | Expr_name) "]" -- range
+
+    List<type> = 
+        "[" ListOf<type, ","> "]"
+
+    NumberLiteral =
+      digit+
+
+    StringLiteral =
+      quoteString<"\"">         -- doubleQuoteStringLiteral
+    | quoteString<"\'">         -- singleQuoteStringLiteral
+
+    quoteString<quote> =
+      quote (~quote any)* quote
+
+    BooleanLiteral =
+      "true" | "false"
+
+    Suite =
+        indent Expr+ dedent
+
+    indent =
+        "\x0f"
+
+    dedent =
+        "\x0e"
+
+    keyword = 
+
+    /* imports */
+
+        "use"
+
+    /* conditional logic */
+
+    |   "if" 
+    |   "else"
+
+    /* iteration logic */
+
+    |   "repeat"
+
+    /* operators */
+
+    |   "and"
+    |   "or"
+    |   "xor"
+    |   "not"
+    |   "lshift"
+    |   "rshift"
+
+    |   "mod"
+    |   "add"
+    |   "min"
+    |   "mul" 
+    |   "div"
+
+    space := 
+        ";" (~"\n" any)* "\n"       --comment
+        | " " | "\t"
+        | "\r" | "\n"
+}
