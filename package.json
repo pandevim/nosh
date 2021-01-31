@@ -1,0 +1,17 @@
+{
+  "name": "nosh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lex": "^1.7.9",
+    "ohm-js": "^15.0.1",
+    "readline-sync": "^1.4.10"
+  }
+}
