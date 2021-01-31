@@ -1,0 +1,10 @@
+
+
+; This program output the name enter by user
+; Output:
+; ['pandevim']
+
+
+name = input <- ["What's your name? "]
+show <- name
+
