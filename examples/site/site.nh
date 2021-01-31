@@ -1,0 +1,43 @@
+site <- void -> functions
+
+  pages <- void -> functions
+    all <- ['https://website1.com', 'https://website2.com', 'https://website3.com']
+    current <- ['https://website.com']
+    functions <- [['all', all], ['current', current]]
+
+  style <- mode -> theme
+    if <- mode == ['light']
+      theme <- mode
+    else <- mode == ['dark']
+      theme <- mode
+    else <- [true]
+      show <- err
+
+  newsletter <- [sta, ema] -> status
+    if <- sta == ['subscribe']
+      success <- email <- ema
+    if <- success
+      status <- ['subscribed']
+    else <- [true]
+      show <- err
+
+  account <- void -> functions
+    username <- ['username']
+    password <- ['password']
+    login <- [usr, pas] -> status
+      if <- usr == username and pas == password
+        status <- [true]
+      else <- [true]
+        show <- err
+    signup <- [usr, pas, ema] -> status
+      success <- username <- usr
+      success <- password <- pas
+      success <- email <- ema
+      if <- success
+        status <- [true]
+      else <- [true]
+        show <- err
+
+    functions <- [['login', login], ['signup', signup]]
+
+  functions <- [['pages', pages], ['style', style], ['newsletter', newsletter], ['account', account]]
