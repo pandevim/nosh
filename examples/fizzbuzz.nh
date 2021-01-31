@@ -1,0 +1,41 @@
+
+
+; Output:
+; [1]
+; [2]
+; ['Fizz']
+; [4]
+; ['Buzz']
+; ['Fizz']
+; [7]
+; [8]
+; ['Fizz']
+; ['Buzz']
+; [11]
+; ['Fizz']
+; [13]
+; ['14']
+; ['FizzBuzz']
+; [16]
+; [17]
+; [Fizz]
+; ['19']
+; [Buzz]
+
+fizzBuzz <- void -> null
+  show <- err
+fizzBuzz <- n -> a
+  if <- n mod [3] == [0] and n mod [5] == [0]
+    a <- ['FizzBuzz']
+  else <- n mod [3] == [0]
+    a <- ['Fizz']
+  else <- n mod [5] == [0]
+    a <- ['Buzz']
+  else <- [true]
+    a <- n
+
+repeat <- [1, ..., 21] -> i
+  show <- fizzBuzz <- i
+
+
+
