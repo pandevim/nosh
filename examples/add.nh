@@ -1,0 +1,10 @@
+
+; output: [223]
+show <- [123] add [100]
+
+
+; output: ['helloworld']
+use <- text
+show <- text.concat <- ['hello', 'world']
+
+
