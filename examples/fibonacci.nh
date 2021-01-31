@@ -1,0 +1,18 @@
+
+fibo <- n -> f
+  first <- [0]
+  second <- [1]
+  if <- n < [0]
+    f <- ['incorrect input']
+  else <- n == [1]
+    f <- series <- first
+  else <- n == [2]
+    f <- series <- second
+  else <- [true]
+    repeat <- [2, ..., n] -> i
+      series <- first add second
+      first <- second
+      second <- series
+    f <- series
+
+show <- fibo <- [7]
