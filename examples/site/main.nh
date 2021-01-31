@@ -1,0 +1,25 @@
+
+
+use <- site
+
+; Output: 
+; ['https://website.com']
+site.pages.current
+
+; Output:
+; ['unsubscribed']
+; ['subscribed']
+status <- site.newsletter <- ['subscribe', 'example@mail.com']
+show <- status
+
+; Output:
+; [false]
+; ['Error logging']
+; [true]
+site.account.login <- ['username', 'password']
+site.account.signup <- ['username', 'password', 'example@mail.com']
+
+; Output:
+; ['light']
+; ['dark']
+site.style <- ['dark']
